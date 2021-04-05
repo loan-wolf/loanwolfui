@@ -1,0 +1,28 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="app-header">
+  <button mat-icon-button routerLink="home" class="example-icon" routerLinkActive="active"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span class="nav-tool-items">
+    <span>
+      <button *ngIf="address" type="button" class="btn btn-1 m-5">{{address}}</button>
+      <button *ngIf="!address" type="button" class="btn btn-1 m-5" (click)="connectMetamask()">Connect</button>
+    </span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="borrow" class="example-icon" routerLinkActive="active"
+        aria-label="Example icon-button with heart icon">
+        Apply
+      </button>
+      <button mat-menu-item routerLink="lend" class="example-icon"
+        aria-label="Example icon-button with share icon">
+        Lend
+      </button>
+    </mat-menu>
+
+  </span>
+</mat-toolbar>

@@ -1,0 +1,25 @@
+<div class="borrow-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <mat-card-content>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                </mat-form-field>
+
+            </mat-card-content>
+
+            <button mat-raised-button color="primary">Login</button>
+
+        </form>
+    </mat-card>
+</div>

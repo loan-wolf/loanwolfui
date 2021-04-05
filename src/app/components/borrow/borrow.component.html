@@ -1,0 +1,63 @@
+<div class="borrow-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+    <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Loan Amount(ETH)" formControlName="loanamount">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Loan Duration,(Months)" formControlName="loanduration">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Collateral Token " formControlName="collateraltoken">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Collateral Amount " formControlName="collateralamount">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Full Name" formControlName="fullname">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput placeholder="Address" formControlName="address">
+        </textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Passport ID" formControlName="passportid">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Monthly Salary(USD)" formControlName="monthlysalary">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Monthly Spendings(USD)" formControlName="monthlyspendings">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Payment Contract Address" formControlName="paymentcontractaddress">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Eth address for payout" formControlName="ethaddress" value="{{address}}" >
+        </mat-form-field>
+        
+      </mat-card-content>
+
+      <button mat-raised-button class="btn btn-primary">Get
+        Loan</button>
+    </form>
+  </mat-card>
+
+</div>
