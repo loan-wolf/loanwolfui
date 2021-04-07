@@ -5,8 +5,13 @@
       <mat-card-content>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Loan Amount(ETH)" formControlName="loanamount">
+          <input matInput placeholder="Loan Amount" formControlName="loanamount">
         </mat-form-field>
+
+        <label for="token">Token Type:</label>   
+        <select formControlName="tokentype">
+          <option [value]="token" *ngFor="let token of tokens">{{token}}</option>
+        </select>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Loan Duration,(Months)" formControlName="loanduration">
@@ -50,7 +55,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Eth address for payout" formControlName="ethaddress" value="{{address}}" >
+          <input matInput placeholder="Eth address for payout" formControlName="erc20address" value="{{ethaddress}}" >
         </mat-form-field>
         
       </mat-card-content>

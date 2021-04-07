@@ -19,9 +19,10 @@ import { BorrowComponent } from './components/borrow/borrow.component';
 import { LendComponent } from './components/lend/lend.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { BorrowerDashboardComponent } from './components/borrower-dashboard/borrower-dashboard.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BorrowDetailComponent } from './components/borrow-detail/borrow-detail.component';
 
 /* Components */
 
@@ -33,9 +34,9 @@ import { HomeComponent } from './components/home/home.component';
     LendComponent,
     DashboardComponent,
     HeaderComponent,
-    LoginComponent,
-    RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    BorrowerDashboardComponent,
+    BorrowDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     FlexLayoutModule
   ],
