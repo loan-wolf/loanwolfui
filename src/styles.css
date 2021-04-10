@@ -112,3 +112,9 @@ body {
 table {
   width: 100%;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+

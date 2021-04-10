@@ -42,7 +42,7 @@ export class BorrowerDashboardComponent implements OnInit {
 
   getRecord(element: any) {
     console.log("Details", element);
-    this.router.navigate(['/bdetails', element.loanid]);
+    this.router.navigate(['/bdetails', element.loanid,'borrower']);
   }
 
 

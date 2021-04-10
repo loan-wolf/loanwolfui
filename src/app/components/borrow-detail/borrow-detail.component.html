@@ -1,3 +1,7 @@
+<div class="center">
+    <img src="assets/img/mascot.png" style="width: 10%;">
+</div>
+
 <div class="row justify-content-center">
     <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="card">
@@ -56,6 +60,15 @@
                         <td></td>
                     </tr>
                 </table>
+                <br>
+                <hr>
+                <div *ngIf="role=='lender'">
+                    <button type="button" class="btn btn-primary">Buy Loan</button>
+                    <br>
+                    <br>
+                    <button  [routerLink]="['/verify']" type="button" class="btn btn-success">Verify</button>
+                </div>
+
             </div>
         </div>
     </div>

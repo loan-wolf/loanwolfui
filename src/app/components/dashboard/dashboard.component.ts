@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BorrowService } from 'src/app/services/borrow/borrow.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,40 +14,38 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
+  data: any;
+  ELEMENT_DATA: any;
+  displayedColumns: string[];
+  dataSource: any;
 
-  displayedColumns: string[] = ['loanId', 'amount', 'duration', 'collateral', 'score', 'getdetails'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private borrowService: BorrowService, private route: ActivatedRoute, private router: Router) {
+    this.displayedColumns = ['loanid', 'loanamount', 'duration', 'collateraltoken', 'score', 'apr', 'getdetails'];
+    this.data = this.borrowService.getUnApprovedLoans().then(val => {
+      this.ELEMENT_DATA = val;
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+    });
+  }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
   }
 
   getRecord(element: any) {
     console.log("Details", element);
+    this.router.navigate(['/bdetails', element.loanid,'lender']);
   }
 
 }
 
 /* Static data */
 export interface PeriodicElement {
-  amount: string;
-  loanId: number;
+  loanamount: string;
+  loanid: string;
   duration: number;
-  collateral: string;
+  collateraltoken: string;
+  collateralamount?: number;
   score?: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { loanId: 1, amount: '10eth', duration: 12, collateral: '1000link', score:'1' },
-  { loanId: 2, amount: '5eth', duration: 4.0026, collateral: '100band',score:'3' },
-  { loanId: 3, amount: '2eth', duration: 6.941, collateral: '100link',score:'4' },
-  { loanId: 4, amount: '7.5eth', duration: 9.0122, collateral: '10link',score:'9' },
-  { loanId: 5, amount: '1eth', duration: 10.811, collateral: '10link',score:'10' },
-  { loanId: 6, amount: '12eth', duration: 12.0107, collateral: '10link',score:'5' },
-  { loanId: 7, amount: '5eth', duration: 14.0067, collateral: '10link',score:'0' },
-  { loanId: 8, amount: '9eth', duration: 15.9994, collateral: '10link',score:'12' },
-  { loanId: 9, amount: '9eth', duration: 18.9984, collateral: '10link',score:'7' },
-  { loanId: 10, amount: '9eth', duration: 40.078, collateral: '10link',score:'8' },
-];
 

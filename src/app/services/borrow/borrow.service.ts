@@ -29,7 +29,12 @@ export class BorrowService {
     return await this.http.get(this.baseUrl + 'getloansdetails/' + loanid).toPromise().then((contract) => {
       return contract;
     });
+  }
 
+  async getUnApprovedLoans() {
+    return await this.http.get(this.baseUrl + 'getloanunapproved').toPromise().then((contract) => {
+      return contract;
+    });
   }
 
 

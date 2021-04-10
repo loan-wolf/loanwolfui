@@ -6,15 +6,17 @@ import { BorrowerDashboardComponent } from './components/borrower-dashboard/borr
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LendComponent } from './components/lend/lend.component';
+import { VerifyComponent } from './components/verify/verify.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'borrow', component: BorrowComponent },
   { path: 'lend', component: LendComponent },
   { path: 'bdashboard/:hash', component: BorrowerDashboardComponent },
-  { path: 'bdetails/:loanid', component: BorrowDetailComponent },
+  { path: 'bdetails/:loanid/:role', component: BorrowDetailComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'verify', component: VerifyComponent }
 ];
 
 @NgModule({

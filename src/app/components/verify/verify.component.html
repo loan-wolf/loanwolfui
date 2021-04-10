@@ -1,0 +1,33 @@
+<div class="center">
+    <img src="assets/img/mascot.png"  style="width: 10%;">
+</div>
+  <div class="borrow-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+      <form class="example-form" [formGroup]="form" (ngSubmit)="verify()">
+  
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" formControlName="name" [(ngModel)]=name>
+          </mat-form-field>
+  
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Monthly Income" formControlName="monthlyincome">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="PassportId" formControlName="passportid" [(ngModel)]=passportid>
+          </mat-form-field>
+  
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" formControlName="email" [(ngModel)]="email">
+          </mat-form-field>
+          
+        </mat-card-content>
+  
+        <button mat-raised-button class="btn btn-primary">Verify</button>
+      </form>
+    </mat-card>
+  
+  </div>
