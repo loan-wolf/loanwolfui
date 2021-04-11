@@ -37,5 +37,14 @@ export class BorrowService {
     });
   }
 
+  async updateLoanStatus(loanId: any) {
+    return await this.http.put(this.baseUrl + 'updateloan', {
+      loanid: loanId,
+      isapproved: "processed"
+    }).toPromise().then((contract) => {
+      console.log("The contract", contract);
+    });
+  }
+
 
 }

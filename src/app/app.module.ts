@@ -24,6 +24,8 @@ import { BorrowerDashboardComponent } from './components/borrower-dashboard/borr
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BorrowDetailComponent } from './components/borrow-detail/borrow-detail.component';
 import { VerifyComponent } from './components/verify/verify.component';
+import { LenderDashboardComponent } from './components/lender-dashboard/lender-dashboard.component';
+import { LenderDetailsComponent } from './components/lender-details/lender-details.component';
 
 /* Components */
 
@@ -38,7 +40,9 @@ import { VerifyComponent } from './components/verify/verify.component';
     HomeComponent,
     BorrowerDashboardComponent,
     BorrowDetailComponent,
-    VerifyComponent
+    VerifyComponent,
+    LenderDashboardComponent,
+    LenderDetailsComponent
   ],
   imports: [
     BrowserModule,

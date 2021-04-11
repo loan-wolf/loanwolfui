@@ -16,14 +16,18 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="borrow" class="example-icon" routerLinkActive="active"
+      <button [disabled]="address?.length <= 0"  mat-menu-item [routerLink]="['bdashboard',address]" class="example-icon" routerLinkActive="active"
         aria-label="Example icon-button with heart icon">
-        Apply
+        Borrower Dashboard
       </button>
-      <button mat-menu-item routerLink="lend" class="example-icon"
+      <button [disabled]="address?.length <= 0" mat-menu-item [routerLink]="['ldashboard',address]" class="example-icon"
         aria-label="Example icon-button with share icon">
-        Lend
+        Lender Dashboard
       </button>
+      <button mat-menu-item [routerLink]="['dashboard']" class="example-icon"
+      aria-label="Example icon-button with share icon">
+       Public Dashboard
+    </button>
     </mat-menu>
   </span>
 </mat-toolbar>
