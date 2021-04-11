@@ -64,13 +64,13 @@
                     <tr>
                         <td>
                             <button *ngIf="approvalStatus=='processed'" type="button"
-                                class="btn btn-primary btn-lg">Stake</button>
+                                class="btn btn-primary btn-lg"  >Stake</button>
                             <button *ngIf="approvalStatus=='pending'" type="button" class="btn btn-primary">Status
                                 Pending</button>
                         </td>
                         <td>
                             <button *ngIf="approvalStatus=='processed'" type="button"
-                                class="btn btn-primary btn-lg">Withdraw</button>
+                                class="btn btn-primary btn-lg" (click)="withdrawLoan(loanid)">Withdraw</button>
                         </td>
                     </tr>
 
