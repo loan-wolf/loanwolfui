@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BorrowService } from 'src/app/services/borrow/borrow.service';
 import { LenderService } from 'src/app/services/lender/lender.service';
 import { SharedService } from 'src/app/services/shared.service';
+import Web3 from 'web3';
 
 @Component({
   selector: 'app-lender-details',
@@ -42,4 +43,12 @@ export class LenderDetailsComponent {
       this.accruedinterest = val.accruedinterest;
     });
   }
+
+  withdrawLoan(loanID: any) {
+    const PAYMENT_CONTRACT_ADDRESS = '0x9838BDD4849278e2dF76a7CE907b5cb9690Af7F7';
+    const WALLET_ADDRESS = '0x5426B3b63E814bf1AAE6aed493877542Ea3d2E4b'
+    var web3: any = new Web3(window.web3.currentProvider);
+    //const contractInstance = new web3.eth.Contract(this.loanWolfSCERCPaymentAbi, PAYMENT_CONTRACT_ADDRESS);
+  }
+
 }

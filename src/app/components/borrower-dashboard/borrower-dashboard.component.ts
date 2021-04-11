@@ -16,7 +16,9 @@ import Web3 from 'web3';
 export class BorrowerDashboardComponent implements OnInit {
   erc20address: any;
   web3: any = new Web3(window.web3.currentProvider);
-  BOND_CONTRACT_ADDRESS = '0x298f27ba039A435B81b9D6A9A956327d32106B03';
+  BOND_CONTRACT_ADDRESS = '0x309AA4AE5E61Ae525454faA972BC0fC5920970b1';
+  WALLET_ADDRESS: any;
+  PAYMENT_CONTRACT_ADDRESS = '0x579C6CA26059f00131Cb0D0228ebE774db67989D';
   data: any;
   ELEMENT_DATA: any;
   displayedColumns: string[];
@@ -24,6 +26,7 @@ export class BorrowerDashboardComponent implements OnInit {
   constructor(private borrowService: BorrowService, private route: ActivatedRoute, private router: Router) {
     this.erc20address = this.route.snapshot.paramMap.get('hash');
     this.displayedColumns = ['loanid', 'loanamount', 'duration', 'collateraltoken', 'score', 'apr', 'getdetails', 'mint'];
+    this.WALLET_ADDRESS = this.erc20address;
     this.data = this.borrowService.getAllLoans(this.erc20address).then(val => {
       this.ELEMENT_DATA = val;
       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
@@ -47,8 +50,7 @@ export class BorrowerDashboardComponent implements OnInit {
     this.router.navigate(['/bdetails', element.loanid, 'borrower']);
   }
 
-  async mintBond(loanid:any)
-  {
+  async mintBond(loanid: any) {
     var bondContractInstance = new this.web3.eth.Contract([
       {
         "inputs": [],
@@ -637,11 +639,11 @@ export class BorrowerDashboardComponent implements OnInit {
         "type": "function"
       }
     ], this.BOND_CONTRACT_ADDRESS);
-    console.log("Bond Contract Instacne",bondContractInstance); 
-    var newLoanTransact = await bondContractInstance.methods.newLoan('0xdb66c14FEc270B7FB6827248eE5c9fE859CD051E', loanid)
-      .send({ from: '0x5426B3b63E814bf1AAE6aed493877542Ea3d2E4b', gas: 210000, to: this.BOND_CONTRACT_ADDRESS });
+    console.log("Bond Contract Instacne", bondContractInstance);
+    var newLoanTransact = await bondContractInstance.methods.newLoan(this.PAYMENT_CONTRACT_ADDRESS, loanid)
+      .send({ from: this.WALLET_ADDRESS, gas: 210000, to: this.BOND_CONTRACT_ADDRESS });
     console.log("New Loan Transaction", newLoanTransact);
-    var balanceTransact = await bondContractInstance.methods.balanceOf('0x5426B3b63E814bf1AAE6aed493877542Ea3d2E4b', loanid).call();
+    var balanceTransact = await bondContractInstance.methods.balanceOf(this.WALLET_ADDRESS, loanid).call();
     console.log("Balance Transaction", balanceTransact);
     await this.updateApprovalStatus(loanid);
     this.router.navigate(['/bdetails', loanid, 'borrower']);
@@ -670,7 +672,7 @@ export interface PeriodicElement {
   collateraltoken: string;
   collateralamount?: number;
   score?: string;
-  isapproved?:string
+  isapproved?: string
 }
 
 
